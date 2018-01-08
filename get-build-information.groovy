@@ -1,15 +1,13 @@
-//This script allows you to get build information for selected jobs
 /*
  You can also add closures to filter the jobs or the builds...
  .find{job->job.name.contains('dsl')}
  .find{ [whatever]}
-
 */
-Jenkins.instance.getAllItems(Job).each{
+Jenkins.instance.getAllItems(Job).find{job->job.name.equals('JOB_NAME')}.each{ // adds filter to search for specific job
 
-  def jobBuilds=it.getBuilds()
+  def jobBuilds=it.getBuilds().limit(10) // limit number of builds to fetch
 
-	//for each of such jobs we can get all the builds (or you can limit the number at your convenience)
+    //for each of such jobs we can get all the builds (or you can limit the number at your convenience)
     jobBuilds.each { build ->
       def runningSince = groovy.time.TimeCategory.minus( new Date(), build.getTime() )
       def currentStatus = build.buildStatusSummary.message
@@ -25,6 +23,6 @@ Jenkins.instance.getAllItems(Job).each{
       parameters.each {
         println "Type: ${it.class} Name: ${it.name}, Value: ${it.dump()}" 
       
-		}
-    }
+      }
+   }
 }

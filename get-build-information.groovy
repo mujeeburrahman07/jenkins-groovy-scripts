@@ -1,3 +1,10 @@
+#!/usr/bin/env groovy
+
+/**
+ * @ Maintainer sudheer veeravalli<veersudhir83@gmail.com>
+ * Gets build information of jobs -> Can be filtered by job name and further limited to a small subset
+ */
+
 /*
  You can also add closures to filter the jobs or the builds...
  .find{job->job.name.contains('dsl')}

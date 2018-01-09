@@ -10,8 +10,8 @@ node {
 
 def notify(status) {
 	emailext (
-	  to: "${mailRecipients}",
-	  replyTo: "noreply@jenkins.com",
+	  to: 'veersudhir83@gmail.com',
+	  replyTo: 'noreply@jenkins-local.com',
 	  subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 	  body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
 	      <p>Check console output at <a href='${env.BUILD_URL}console'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</p>"""

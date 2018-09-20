@@ -2,7 +2,7 @@
 
 /**
  * @ Maintainer sudheer veeravalli<veersudhir83@gmail.com>
- * Lists all plugins and filters out any blue ocean plugins if not needed
+ * Lists all plugins and optionally filters out any blue ocean plugins if not needed
  */
  
 def plugins = Jenkins.instance.pluginManager.plugins
@@ -14,3 +14,4 @@ for(String item in allPlugins) {
     finalList.add(item.substring(7))
   //}
 }
+print finalList
